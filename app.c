@@ -8,14 +8,14 @@ uint32_t right[16] __attribute__((aligned(64))) = {0, 100, 200, 300, 400, 500, 6
 uint32_t result[16] __attribute__((aligned(64))) = {0};
 
 int main(int argc, char** argv) {
-    // leftとrightをいっぺんに加算する
+    // leftとrightの16要素をいっぺんに加算する
     asm (
         "vmovdqa32 (%0), %%zmm0;"
         "vpaddd (%1), %%zmm0, %%zmm0;"
         "vmovdqa32 %%zmm0, (%2);"
         ::"a"(left), "b"(right), "c"(result));
 
-    // 結果を出力
+    // 計算結果を表示
     for (int i = 0; i < 16; i++) {
         printf("result[%d] = %d\n", i, result[i]);
     }
