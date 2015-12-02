@@ -11,7 +11,7 @@
 static void (*do_error_trap)(struct pt_regs *regs, long error_code, char *str,
                           unsigned long trapnr, int signr);
 
-u32 zmm0_register[16];
+static u32 zmm0_register[16];
 
 static void avx512emulation_do_invalid_op(struct pt_regs *regs, long error_code)
 {
